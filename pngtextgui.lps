@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="13">
+      <Unit0>
+        <Filename Value="pngtextgui.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="16"/>
+        <UsageCount Value="45"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MainForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <TopLine Value="43"/>
+        <CursorPos X="23" Y="56"/>
+        <UsageCount Value="45"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="about.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="AboutForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="24"/>
+        <CursorPos X="7" Y="47"/>
+        <UsageCount Value="45"/>
+        <LoadedDesigner Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="libload.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="30" Y="8"/>
+        <UsageCount Value="30"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="pngtext.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="138"/>
+        <CursorPos X="7" Y="155"/>
+        <UsageCount Value="29"/>
+        <Loaded Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="about.lfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="22"/>
+        <CursorPos X="20" Y="8"/>
+        <UsageCount Value="9"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="../pngtext/source/lib.d"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="22"/>
+        <CursorPos Y="36"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="/usr/include/dmd/phobos/std/string.d"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="226"/>
+        <CursorPos Y="240"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="../pngtext/source/pngtext.d"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="37"/>
+        <CursorPos Y="51"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="../pngtext/source/arsd/png.d"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="7"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="/usr/include/dmd/phobos/std/file.d"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="297"/>
+        <CursorPos Y="311"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="/usr/include/dmd/phobos/std/internal/cstring.d"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="181"/>
+        <CursorPos Y="195"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="/usr/include/dmd/druntime/import/object.d"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4287"/>
+        <CursorPos Y="4301"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit12>
+    </Units>
+    <JumpHistory Count="24" HistoryIndex="23">
+      <Position1>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="142" TopLine="130"/>
+      </Position1>
+      <Position2>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="143" TopLine="130"/>
+      </Position2>
+      <Position3>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="142" Column="62" TopLine="130"/>
+      </Position3>
+      <Position4>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="143" Column="60" TopLine="135"/>
+      </Position4>
+      <Position5>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="15" Column="23"/>
+      </Position5>
+      <Position6>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="17" Column="72" TopLine="7"/>
+      </Position6>
+      <Position7>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="16" Column="28" TopLine="3"/>
+      </Position7>
+      <Position8>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="17" Column="64" TopLine="3"/>
+      </Position8>
+      <Position9>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="19" Column="42" TopLine="46"/>
+      </Position9>
+      <Position10>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="146" Column="60" TopLine="133"/>
+      </Position10>
+      <Position11>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="147" Column="56" TopLine="134"/>
+      </Position11>
+      <Position12>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="149" Column="40" TopLine="135"/>
+      </Position12>
+      <Position13>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="143" Column="16" TopLine="130"/>
+      </Position13>
+      <Position14>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="149" Column="16" TopLine="136"/>
+      </Position14>
+      <Position15>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="151" Column="22" TopLine="136"/>
+      </Position15>
+      <Position16>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="144" Column="16" TopLine="137"/>
+      </Position16>
+      <Position17>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="153" Column="32" TopLine="142"/>
+      </Position17>
+      <Position18>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="167" Column="83" TopLine="147"/>
+      </Position18>
+      <Position19>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="150" TopLine="142"/>
+      </Position19>
+      <Position20>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="151" TopLine="142"/>
+      </Position20>
+      <Position21>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="152" TopLine="142"/>
+      </Position21>
+      <Position22>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="151" Column="41" TopLine="142"/>
+      </Position22>
+      <Position23>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="150" TopLine="142"/>
+      </Position23>
+      <Position24>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="153" Column="23" TopLine="138"/>
+      </Position24>
+    </JumpHistory>
+  </ProjectSession>
+  <Debugging>
+    <Watches Count="1">
+      <Item1>
+        <Expression Value="I"/>
+        <DisplayStyle Value="wdfUnsigned"/>
+      </Item1>
+    </Watches>
+  </Debugging>
+</CONFIG>
