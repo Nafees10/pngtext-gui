@@ -1,3 +1,4 @@
+{%BuildCommand }
 unit main;
 
 {$mode objfpc}{$H+}
@@ -43,7 +44,7 @@ type
     /// updates the Status of file in StatusBar
     procedure SetStatusBarStatus(Status : String);
     /// updates the Quality of image in StatusBar
-    procedure SetStatusBarQuality(Quality : String);
+    procedure SetStatusBarQuality(Quality : Single);
     /// updates the Max Length of image in StatusBar
     procedure SetStatusBarMaxLength(MaxLength : String);
 	public
@@ -73,16 +74,7 @@ begin
   else
   	StatusBar.Panels[1].Text:='Not Saved';
 
-	if Lib.Quality <= 1 then
-    StatusBar.Panels[3].Text:='Highest'
-  else if (Lib.Quality >= 2) and (Lib.Quality <= 3.5) then
-    StatusBar.Panels[3].Text:='High'
-  else if (Lib.Quality > 3.5) and (Lib.Quality <= 4.5) then
-    StatusBar.Panels[3].Text:='Medium'
-	else if (Lib.Quality > 4.5) and (Lib.Quality <= 6) then
-    StatusBar.Panels[3].Text:='Low'
-  else if Lib.Quality > 7 then
-    StatusBar.Panels[3].Text:='Saturated';
+  SetStatusBarQuality(Lib.Quality);
 
   StatusBar.Panels[5].Text:=IntToStr(Lib.SaturatedBytesCount);
 end;
@@ -92,9 +84,21 @@ begin
 	StatusBar.Panels[1].Text:=Status;
 end;
 
-procedure TMainForm.SetStatusBarQuality(Quality : String);
+procedure TMainForm.SetStatusBarQuality(Quality : Single);
 begin
-  StatusBar.Panels[3].Text:=Quality;
+  StatusBar.Panels[3].Text:=Format('%.2f',[Quality])+' - ';
+	if Quality <= 2 then
+    StatusBar.Panels[3].Text:=StatusBar.Panels[3].Text+'Highest'
+  else if Quality <= 3.5 then
+    StatusBar.Panels[3].Text:=StatusBar.Panels[3].Text+'High'
+  else if Quality <= 4.5 then
+    StatusBar.Panels[3].Text:=StatusBar.Panels[3].Text+'Medium'
+	else if Quality <= 6 then
+    StatusBar.Panels[3].Text:=StatusBar.Panels[3].Text+'Low'
+  else if Quality <= 7 then
+    StatusBar.Panels[3].Text:=StatusBar.Panels[3].Text+'Lowest'
+  else
+    StatusBar.Panels[3].Text:=StatusBar.Panels[3].Text+'Saturated';
 end;
 
 procedure TMainForm.SetStatusBarMaxLength(MaxLength : String);
@@ -151,6 +155,7 @@ begin
 				ShowError('Failed to save to image.');
 		end;
   end;
+  Lib.Refresh();
 	UpdateStatusBar();
 end;
 

@@ -11,11 +11,12 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poDefault
+  LCLVersion = '1.8.4.0'
   Visible = False
   object StatusBar: TStatusBar
     Left = 0
     Height = 21
-    Top = 321
+    Top = 298
     Width = 436
     Panels = <    
       item
@@ -46,7 +47,7 @@ object MainForm: TMainForm
   end
   inline SynEdit: TSynEdit
     Left = 0
-    Height = 321
+    Height = 298
     Top = 0
     Width = 436
     Align = alClient
