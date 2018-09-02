@@ -34,6 +34,7 @@ type
 		procedure QuitMenuItemClick(Sender: TObject);
 		procedure ReadMenuItemClick(Sender: TObject);
 		procedure SaveMenuItemClick(Sender: TObject);
+		procedure SynEditChange(Sender: TObject);
 	private
 		Lib : TPngText;
     /// updates status bar according to values from Lib
@@ -131,25 +132,38 @@ end;
 
 procedure TMainForm.SaveMenuItemClick(Sender: TObject);
 begin
+  if Lib.IsSaved then
+  	Exit;
 	// make sure that Container Image is set
   if not FileExists(Lib.ContainerImage) then
   	showError ('Invalid container image selected. Use Ctrl+O to select one.')
-  else if Lib.OutputImage = '' then
-  	if SaveDialog.Execute then
+  else
+  begin
+		if Lib.OutputImage = '' then
+    	if SaveDialog.Execute then
+      	Lib.OutputImage:=SaveDialog.FileName;
+    if Lib.OutputImage <> '' then
     begin
-      Lib.OutputImage:=SaveDialog.FileName;
-      Lib.Data:=ByteArray(SynEdit.Lines.Text);
-      Lib.write();
-      if not Lib.IsSaved then
+			Lib.Data:=ByteArray(SynEdit.Lines.Text);
+      Lib.Write();
+    	if not Lib.IsSaved then
 				ShowError('Failed to save to image.');
 		end;
+  end;
 	UpdateStatusBar();
+end;
+
+procedure TMainForm.SynEditChange(Sender: TObject);
+begin
+  Lib.IsSaved:=False;
+	SetStatusBarStatus('Not Saved');
 end;
 
 procedure TMainForm.NewMenuItemClick(Sender: TObject);
 begin
 	Lib.Destroy;
   Lib := TPngText.Create();
+  SynEdit.Lines.Clear;
   UpdateStatusBar();
 end;
 
