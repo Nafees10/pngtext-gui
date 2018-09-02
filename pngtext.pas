@@ -12,11 +12,10 @@ const
 
 type
   ByteArray = array of Byte;
-  //ByteArrayPtr = ^ByteArray;
   BytePtr = ^Byte;
  	TCardinalPtr = ^Cardinal;
   TReadFromPngFunction = function (filename : PChar; Length : TCardinalPtr) : BytePtr; cdecl;
-  TWriteToPngFunction = procedure (filename, oFilename : PChar; data : BytePtr; Length : Cardinal); cdecl;
+  TWriteToPngFunction = function (filename, oFilename : PChar; data : BytePtr; Length : Cardinal) : Boolean; cdecl;
   TPngCapacityFunction = function (filename : PChar; density : Byte) : Cardinal; cdecl;
   TGetQualityFunction = function (filename : PChar; dataLength : Cardinal) : Single; cdecl;
   TInitTermFunction = procedure (); cdecl;
@@ -32,8 +31,6 @@ type
       _Quality : Single;
       /// Stores the max number of bytes that can be stored when the image is saturated
       _SaturatedBytesCount : Cardinal;
-      /// stores whether the image was saved since last modified
-      _IsSaved : Boolean;
       /// stores if everything was loaded properly
       _Loaded : Boolean;
       /// The handle to the library
@@ -52,6 +49,8 @@ type
       /// write property for Text
       procedure WriteData(newVal : ByteArray);
     public
+      /// stores whether the image was saved since last modified
+      IsSaved : Boolean;
       /// Constructor
       Constructor Create;
       /// Destructor
@@ -66,8 +65,6 @@ type
       property Quality : Single read _Quality;
       /// the number of bytes that can be stored with the whole image saturated
       property SaturatedBytesCount : Cardinal read _SaturatedBytesCount;
-      /// if the image is saved, and there were no more modifications
-			property IsSaved : Boolean read _IsSaved;
       /// if the library & its functions were loaded successfully
       property Loaded : Boolean read _Loaded;
 			/// recalls all the value-getting library functions
@@ -85,7 +82,7 @@ begin
 	// set all vars to their default value
   _ContainerPng:='';
   _OutputPng:='';
-  _isSaved:=False;
+  IsSaved:=False;
   _SaturatedBytesCount:=0;
   LibH:=NilHandle;
   // now load the library
@@ -123,20 +120,20 @@ end;
 
 procedure TPngText.WriteContainerPng(newVal : String);
 begin
-  _ContainerPng:=newVal;
-  _isSaved:=False;
+  _ContainerPng:=Copy(newVal,0, Length(newVal));
+  IsSaved:=False;
 end;
 
 procedure TPngText.WriteOutputPng(newVal : String);
 begin
-  _OutputPng:=newVal;
-  _isSaved:=False;
+  _OutputPng:=Copy(newVal,0, Length(newVal));
+  IsSaved:=False;
 end;
 
 procedure TPngText.WriteData(newVal : ByteArray);
 begin
-	_Data:=newVal;
-  _isSaved:=False;
+	_Data:=Copy(newVal,0, Length(newVal));
+  IsSaved:=False;
 end;
 
 procedure TPngText.Refresh();
@@ -146,7 +143,7 @@ var
   ArrayPtr : BytePtr;
   I : Cardinal;
 begin
-	ContainerPngPChar:=PChar(_ContainerPng);
+	ContainerPngPChar:=PChar(Copy(_ContainerPng,0,Length(_ContainerPng)));
   _SaturatedBytesCount:=LibPngCapacity(ContainerPngPChar, 8);
   _Quality:=LibGetQuality(ContainerPngPChar, Length(Data));
   ArrayPtr:=LibReadFromPng(ContainerPngPChar, @Len);
@@ -158,7 +155,7 @@ begin
       ArrayPtr:=ArrayPtr+1;
 		end;
 	// since everything is same as it was in image, no need to save
-  _isSaved:=True;
+  IsSaved:=True;
 end;
 
 procedure TPngText.Write();
@@ -170,14 +167,13 @@ begin
   if (Length(_Data) > _SaturatedBytesCount) or (Length(_Data)> power(2, 24)) then
   begin
   	ShowError('Container Image can not hold that much data. Try using a larger image.');
-    _IsSaved:=False;
+    IsSaved:=False;
 	end
 	else begin
-    ContainerPngPChar:=PChar(_ContainerPng);
-    OutputPngChar:=PChar(_OutputPng);
-    DataToPass:=_Data;
-    LibWriteToPng(ContainerPngPChar,OutputPngChar,@DataToPass[0], Length(DataToPass));
-    _isSaved:=True;
+    ContainerPngPChar:=PChar(Copy(_ContainerPng,0,Length(_ContainerPng)));
+    OutputPngChar:=PChar(Copy(_OutputPng,0,Length(_OutputPng)));
+    DataToPass:=Copy(_Data,0,Length(_Data));
+    IsSaved:=LibWriteToPng(ContainerPngPChar,OutputPngChar,@DataToPass[0], Length(DataToPass));
 	end;
 end;
 
