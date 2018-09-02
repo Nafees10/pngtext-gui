@@ -9,11 +9,12 @@ object MainForm: TMainForm
   Menu = MainMenu
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  LCLVersion = '1.8.4.0'
   Visible = False
   object StatusBar: TStatusBar
     Left = 0
     Height = 21
-    Top = 321
+    Top = 298
     Width = 436
     Panels = <    
       item
@@ -44,7 +45,7 @@ object MainForm: TMainForm
   end
   inline SynEdit: TSynEdit
     Left = 0
-    Height = 321
+    Height = 298
     Top = 0
     Width = 436
     Align = alClient
@@ -62,7 +63,7 @@ object MainForm: TMainForm
     BookMarkOptions.GlyphsVisible = False
     BookMarkOptions.LeftMargin = 0
     BookMarkOptions.Xoffset = 0
-    Gutter.Width = 57
+    Gutter.Width = 55
     Gutter.MouseActions = <>
     RightGutter.Width = 0
     RightGutter.MouseActions = <>
@@ -516,7 +517,7 @@ object MainForm: TMainForm
     TabWidth = 4
     inline SynLeftGutterPartList1: TSynGutterPartList
       object SynGutterMarks1: TSynGutterMarks
-        Width = 24
+        Width = 22
         MouseActions = <>
       end
       object SynGutterLineNumber1: TSynGutterLineNumber

@@ -3,13 +3,13 @@
   <ProjectSession>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="13">
+    <Units Count="18">
       <Unit0>
         <Filename Value="pngtextgui.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="16"/>
-        <UsageCount Value="45"/>
+        <UsageCount Value="54"/>
       </Unit0>
       <Unit1>
         <Filename Value="main.pas"/>
@@ -17,9 +17,9 @@
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="43"/>
-        <CursorPos X="23" Y="56"/>
-        <UsageCount Value="45"/>
+        <TopLine Value="146"/>
+        <CursorPos X="93" Y="170"/>
+        <UsageCount Value="54"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -32,24 +32,23 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="24"/>
         <CursorPos X="7" Y="47"/>
-        <UsageCount Value="45"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="54"/>
       </Unit2>
       <Unit3>
         <Filename Value="libload.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="30" Y="8"/>
-        <UsageCount Value="30"/>
+        <UsageCount Value="39"/>
       </Unit3>
       <Unit4>
         <Filename Value="pngtext.pas"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="138"/>
-        <CursorPos X="7" Y="155"/>
-        <UsageCount Value="29"/>
+        <TopLine Value="107"/>
+        <CursorPos X="3" Y="116"/>
+        <UsageCount Value="38"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -57,15 +56,15 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="22"/>
         <CursorPos X="20" Y="8"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit5>
       <Unit6>
         <Filename Value="../pngtext/source/lib.d"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="22"/>
-        <CursorPos Y="36"/>
-        <UsageCount Value="10"/>
+        <TopLine Value="6"/>
+        <CursorPos Y="22"/>
+        <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit6>
       <Unit7>
@@ -73,7 +72,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="226"/>
         <CursorPos Y="240"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit7>
       <Unit8>
@@ -81,14 +80,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="37"/>
         <CursorPos Y="51"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit8>
       <Unit9>
         <Filename Value="../pngtext/source/arsd/png.d"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="7"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit9>
       <Unit10>
@@ -96,7 +95,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="297"/>
         <CursorPos Y="311"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit10>
       <Unit11>
@@ -104,7 +103,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="181"/>
         <CursorPos Y="195"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="8"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit11>
       <Unit12>
@@ -112,107 +111,148 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="4287"/>
         <CursorPos Y="4301"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit12>
+      <Unit13>
+        <Filename Value="/usr/share/lazarus/1.8.4/lcl/include/customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="946"/>
+        <CursorPos Y="961"/>
+        <UsageCount Value="10"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="/usr/share/lazarus/1.8.4/lcl/include/messagedialogs.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="193"/>
+        <CursorPos Y="209"/>
+        <UsageCount Value="10"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="/usr/share/lazarus/1.8.4/components/lazutils/lazlogger.pas"/>
+        <UnitName Value="LazLogger"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="796"/>
+        <CursorPos Y="811"/>
+        <UsageCount Value="10"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="/usr/share/lazarus/1.8.4/lcl/include/lclintf.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="488"/>
+        <CursorPos Y="502"/>
+        <UsageCount Value="10"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="/usr/share/lazarus/1.8.4/components/lazutils/lazmethodlist.pas"/>
+        <UnitName Value="LazMethodList"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="285"/>
+        <CursorPos Y="193"/>
+        <UsageCount Value="10"/>
+      </Unit17>
     </Units>
-    <JumpHistory Count="24" HistoryIndex="23">
+    <JumpHistory Count="25" HistoryIndex="24">
       <Position1>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="142" TopLine="130"/>
+        <Caret Line="119" TopLine="98"/>
       </Position1>
       <Position2>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="143" TopLine="130"/>
+        <Caret Line="115" TopLine="98"/>
       </Position2>
       <Position3>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="142" Column="62" TopLine="130"/>
+        <Caret Line="116" TopLine="98"/>
       </Position3>
       <Position4>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="143" Column="60" TopLine="135"/>
+        <Caret Line="117" TopLine="98"/>
       </Position4>
       <Position5>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="15" Column="23"/>
+        <Caret Line="118" TopLine="98"/>
       </Position5>
       <Position6>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="17" Column="72" TopLine="7"/>
+        <Caret Line="156" Column="27" TopLine="144"/>
       </Position6>
       <Position7>
-        <Filename Value="pngtext.pas"/>
-        <Caret Line="16" Column="28" TopLine="3"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="129" Column="21" TopLine="67"/>
       </Position7>
       <Position8>
-        <Filename Value="pngtext.pas"/>
-        <Caret Line="17" Column="64" TopLine="3"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="128" Column="21" TopLine="101"/>
       </Position8>
       <Position9>
-        <Filename Value="pngtext.pas"/>
-        <Caret Line="19" Column="42" TopLine="46"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="172" Column="12" TopLine="148"/>
       </Position9>
       <Position10>
-        <Filename Value="pngtext.pas"/>
-        <Caret Line="146" Column="60" TopLine="133"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="171" Column="17" TopLine="148"/>
       </Position10>
       <Position11>
-        <Filename Value="pngtext.pas"/>
-        <Caret Line="147" Column="56" TopLine="134"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="31" Column="41" TopLine="23"/>
       </Position11>
       <Position12>
-        <Filename Value="pngtext.pas"/>
-        <Caret Line="149" Column="40" TopLine="135"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="163" Column="16" TopLine="148"/>
       </Position12>
       <Position13>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="143" Column="16" TopLine="130"/>
+        <Caret Line="118" TopLine="102"/>
       </Position13>
       <Position14>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="149" Column="16" TopLine="136"/>
+        <Caret Line="119" TopLine="102"/>
       </Position14>
       <Position15>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="151" Column="22" TopLine="136"/>
+        <Caret Line="108" Column="17" TopLine="103"/>
       </Position15>
       <Position16>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="144" Column="16" TopLine="137"/>
+        <Caret Line="119" Column="5" TopLine="102"/>
       </Position16>
       <Position17>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="153" Column="32" TopLine="142"/>
+        <Caret Line="40" Column="11" TopLine="27"/>
       </Position17>
       <Position18>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="167" Column="83" TopLine="147"/>
+        <Caret Line="93" Column="10" TopLine="78"/>
       </Position18>
       <Position19>
-        <Filename Value="pngtext.pas"/>
-        <Caret Line="150" TopLine="142"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="159" Column="5" TopLine="135"/>
       </Position19>
       <Position20>
-        <Filename Value="pngtext.pas"/>
-        <Caret Line="151" TopLine="142"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="30" Column="41" TopLine="30"/>
       </Position20>
       <Position21>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="152" TopLine="142"/>
+        <Caret Line="176" Column="52" TopLine="156"/>
       </Position21>
       <Position22>
-        <Filename Value="pngtext.pas"/>
-        <Caret Line="151" Column="41" TopLine="142"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="165" Column="26" TopLine="138"/>
       </Position22>
       <Position23>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="150" TopLine="142"/>
+        <Caret Line="21" Column="92"/>
       </Position23>
       <Position24>
         <Filename Value="pngtext.pas"/>
-        <Caret Line="153" Column="23" TopLine="138"/>
+        <Caret Line="121" Column="8" TopLine="99"/>
       </Position24>
+      <Position25>
+        <Filename Value="pngtext.pas"/>
+        <Caret Line="113" Column="3" TopLine="105"/>
+      </Position25>
     </JumpHistory>
   </ProjectSession>
   <Debugging>
