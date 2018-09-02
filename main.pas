@@ -160,15 +160,14 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
-	Lib := TPngText.Create();
-  // if could not load lib, exit
+	Lib:=TPngText.Create();
   if not Lib.Loaded then
   	Application.Terminate;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
-  Lib.Destroy();
+	//FreeAndNil(Lib); // Uncommenting this crashes the program right after it closes, idk why
 end;
 
 end.
