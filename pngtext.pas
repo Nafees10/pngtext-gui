@@ -12,7 +12,7 @@ const
 
 type
   ByteArray = array of Byte;
-  ByteArrayPtr = ^ByteArray;
+  //ByteArrayPtr = ^ByteArray;
   BytePtr = ^Byte;
  	TCardinalPtr = ^Cardinal;
   TReadFromPngFunction = function (filename : PChar; Length : TCardinalPtr) : BytePtr; cdecl;
@@ -27,7 +27,7 @@ type
       /// Filename of the resulting image containing Text
       _OutputPng : String;
       /// The text which was read or written to OutputPng
-      _Text : String;
+      _Data : array of Byte;
       /// the quality of the image (0 - 8), 0 is highest, 8 is saturated
       _Quality : Single;
       /// Stores the max number of bytes that can be stored when the image is saturated
@@ -50,7 +50,7 @@ type
       /// write property for OutputPng
       procedure WriteOutputPng(newVal : String);
       /// write property for Text
-      procedure WriteText(newVal : String);
+      procedure WriteData(newVal : ByteArray);
     public
       /// Constructor
       Constructor Create;
@@ -61,7 +61,7 @@ type
       /// the filename of Output Image
       property OutputImage : String read _OutputPng write WriteOutputPng;
       /// the text to be read or written
-      property Text : String read _Text write WriteText;
+      property Data : ByteArray read _Data write WriteData;
       /// the quality of the image (0 - 8), 0 is highest, 8 is saturated
       property Quality : Single read _Quality;
       /// the number of bytes that can be stored with the whole image saturated
@@ -85,7 +85,6 @@ begin
 	// set all vars to their default value
   _ContainerPng:='';
   _OutputPng:='';
-  _Text:='';
   _isSaved:=False;
   _SaturatedBytesCount:=0;
   LibHandle:=NilHandle;
@@ -131,42 +130,44 @@ begin
   _isSaved:=False;
 end;
 
-procedure TPngText.WriteText(newVal : String);
+procedure TPngText.WriteData(newVal : ByteArray);
 begin
-	_Text:=newVal;
+	_Data:=newVal;
   _isSaved:=False;
 end;
 
 procedure TPngText.Refresh();
 var
   ContainerPngPChar : PChar;
-  Length : Cardinal;
+  Len : Cardinal;
   ArrayPtr : BytePtr;
   I : Cardinal;
 begin
 	ContainerPngPChar:=PChar(_ContainerPng);
   _SaturatedBytesCount:=LibPngCapacity(ContainerPngPChar, 8);
-  _Quality:=LibGetQuality(ContainerPngPChar, _Text.Length);
-  ArrayPtr:=LibReadFromPng(ContainerPngPChar, @Length);
-  ShowError('Length is '+IntToStr(Length));
-  SetLength(_Text, Length);
-  if Length > 0 then
-  	for I:=0 to Length-1 do
-    	_Text[I]:=Char(Byte(ArrayPtr+I));
-  // since everything is same as it was in image, no need to save
+  _Quality:=LibGetQuality(ContainerPngPChar, Length(Data));
+  ArrayPtr:=LibReadFromPng(ContainerPngPChar, @Len);
+  SetLength(_Data, Len);
+  if Len > 0 then
+  	for I:=0 to Len-1 do
+		begin
+			_Data[I]:= Byte(ArrayPtr^);
+      ArrayPtr:=ArrayPtr+1;
+		end;
+	// since everything is same as it was in image, no need to save
   _isSaved:=True;
 end;
 
 procedure TPngText.Write();
 begin
 	// check if the text will fit
-  if (_Text.Length > _SaturatedBytesCount) or (_Text.Length > power(2, 24)) then
+  if (Length(_Data) > _SaturatedBytesCount) or (Length(_Data)> power(2, 24)) then
   begin
   	ShowError('Container Image can not hold that much data. Try using a larger image.');
     _IsSaved:=False;
 	end
 	else begin
-    LibWriteToPng(PChar(_ContainerPng),PChar(_OutputPng),BytePtr(_Text), _Text.Length);
+    LibWriteToPng(PChar(_ContainerPng),PChar(_OutputPng),BytePtr(_Data), Length(_Data));
     _isSaved:=True;
 	end;
 end;
