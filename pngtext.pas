@@ -37,7 +37,7 @@ type
       /// stores if everything was loaded properly
       _Loaded : Boolean;
       /// The handle to the library
-      LibHandle : TLibHandle;
+      LibH : TLibHandle;
       // loaded functions from the library
 			LibReadFromPng : TReadFromPngFunction;
       LibWriteToPng : TWriteToPngFunction;
@@ -87,22 +87,22 @@ begin
   _OutputPng:='';
   _isSaved:=False;
   _SaturatedBytesCount:=0;
-  LibHandle:=NilHandle;
+  LibH:=NilHandle;
   // now load the library
-  LibHandle:=LoadLibrary(LIBNAME);
-  if LibHandle = NilHandle then
+  LibH:=LoadLibrary(LIBNAME);
+  if LibH = NilHandle then
   begin
 		ShowError('Failed to load library: '+LIBNAME+':'#10+GetLoadErrorStr);
     _Loaded:=False;
 	end else
   begin
     // load the functions
-    LibReadFromPng:=TReadFromPngFunction(GetProcedureAddress(LibHandle, 'readFromPng'));
-    LibWriteToPng:=TWriteToPngFunction(GetProcedureAddress(LibHandle, 'writeToPng'));
-    LibPngCapacity:=TPngCapacityFunction(GetProcedureAddress(LibHandle, 'pngCapacity'));
-    LibGetQuality:=TGetQualityFunction(GetProcedureAddress(LibHandle, 'getQuality'));
-    LibInit:=TInitTermFunction(GetProcedureAddress(LibHandle, 'init'));
-    LibTerm:=TInitTermFunction(GetProcedureAddress(LibHandle, 'term'));
+    LibReadFromPng:=TReadFromPngFunction(GetProcedureAddress(LibH, 'readFromPng'));
+    LibWriteToPng:=TWriteToPngFunction(GetProcedureAddress(LibH, 'writeToPng'));
+    LibPngCapacity:=TPngCapacityFunction(GetProcedureAddress(LibH, 'pngCapacity'));
+    LibGetQuality:=TGetQualityFunction(GetProcedureAddress(LibH, 'getQuality'));
+    LibInit:=TInitTermFunction(GetProcedureAddress(LibH, 'init'));
+    LibTerm:=TInitTermFunction(GetProcedureAddress(LibH, 'term'));
 		// init it
 		LibInit();
 		_Loaded:=True;
@@ -113,9 +113,12 @@ Destructor TPngText.Destroy;
 begin
   // try to unload it
   LibTerm();
-  if LibHandle <> NilHandle then
-  	if FreeLibrary(LibHandle) then
-    	LibHandle:=NilHandle;
+  if (LibH <> NilHandle) and (_Loaded) then
+  	if FreeLibrary(LibH) then
+    begin
+    	LibH:=NilHandle;
+      _Loaded:=False;
+		end;
 end;
 
 procedure TPngText.WriteContainerPng(newVal : String);
@@ -159,6 +162,9 @@ begin
 end;
 
 procedure TPngText.Write();
+var
+  ContainerPngPChar, OutputPngChar : PChar;
+  DataToPass : ByteArray;
 begin
 	// check if the text will fit
   if (Length(_Data) > _SaturatedBytesCount) or (Length(_Data)> power(2, 24)) then
@@ -167,7 +173,10 @@ begin
     _IsSaved:=False;
 	end
 	else begin
-    LibWriteToPng(PChar(_ContainerPng),PChar(_OutputPng),BytePtr(_Data), Length(_Data));
+    ContainerPngPChar:=PChar(_ContainerPng);
+    OutputPngChar:=PChar(_OutputPng);
+    DataToPass:=_Data;
+    LibWriteToPng(ContainerPngPChar,OutputPngChar,@DataToPass[0], Length(DataToPass));
     _isSaved:=True;
 	end;
 end;
