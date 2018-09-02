@@ -17,7 +17,6 @@ type
 		FileMenuItem: TMenuItem;
 		HelpMenuItem: TMenuItem;
 		AboutMenuItem: TMenuItem;
-		Memo: TMemo;
 		ReadMenuItem: TMenuItem;
 		OpenDialog: TOpenDialog;
 		QuitMenuItem: TMenuItem;
@@ -26,6 +25,7 @@ type
 		NewMenuItem: TMenuItem;
 		OpenMenuItem: TMenuItem;
 		StatusBar: TStatusBar;
+		SynEdit: TSynEdit;
 		procedure AboutMenuItemClick(Sender: TObject);
 		procedure FormCreate(Sender: TObject);
 		procedure FormDestroy(Sender: TObject);
@@ -38,6 +38,12 @@ type
 		Lib : TPngText;
     /// updates status bar according to values from Lib
     procedure UpdateStatusBar();
+    /// updates the Status of file in StatusBar
+    procedure SetStatusBarStatus(Status : String);
+    /// updates the Quality of image in StatusBar
+    procedure SetStatusBarQuality(Quality : String);
+    /// updates the Max Length of image in StatusBar
+    procedure SetStatusBarMaxLength(MaxLength : String);
 	public
 
 	end;
@@ -79,6 +85,21 @@ begin
   StatusBar.Panels[5].Text:=IntToStr(Lib.SaturatedBytesCount);
 end;
 
+procedure TMainForm.SetStatusBarStatus(Status : String);
+begin
+	StatusBar.Panels[1].Text:=Status;
+end;
+
+procedure TMainForm.SetStatusBarQuality(Quality : String);
+begin
+  StatusBar.Panels[3].Text:=Quality;
+end;
+
+procedure TMainForm.SetStatusBarMaxLength(MaxLength : String);
+begin
+  StatusBar.Panels[5].Text:=MaxLength;
+end;
+
 procedure TMainForm.OpenMenuItemClick(Sender: TObject);
 begin
 	if OpenDialog.Execute then
@@ -103,7 +124,9 @@ end;
 procedure TMainForm.ReadMenuItemClick(Sender: TObject);
 begin
 	// read text into the memo
-  Memo.Lines.AddText(Lib.Text);
+  SynEdit.Lines.Clear;
+  SynEdit.Lines.AddText(AnsiString(Lib.Data));
+  UpdateStatusBar();
 end;
 
 procedure TMainForm.SaveMenuItemClick(Sender: TObject);
@@ -115,6 +138,7 @@ begin
   	if SaveDialog.Execute then
     begin
       Lib.OutputImage:=SaveDialog.FileName;
+      Lib.Data:=ByteArray(SynEdit.Lines.Text);
       Lib.write();
       if not Lib.IsSaved then
 				ShowError('Failed to save to image.');
