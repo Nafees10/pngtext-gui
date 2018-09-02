@@ -27,6 +27,7 @@ type
 		StatusBar: TStatusBar;
 		SynEdit: TSynEdit;
 		procedure AboutMenuItemClick(Sender: TObject);
+		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
 		procedure FormCreate(Sender: TObject);
 		procedure FormDestroy(Sender: TObject);
   	procedure NewMenuItemClick(Sender: TObject);
@@ -170,6 +171,17 @@ end;
 procedure TMainForm.AboutMenuItemClick(Sender: TObject);
 begin
 	AboutForm.Show;
+end;
+
+procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  if (not Lib.IsSaved) and (Lib.ContainerImage <> '') then
+  begin
+    CloseAction:=caNone;
+    if MessageDlg('pngtext','Unsaved data will be lost. Do you want to close pngtext?',mtConfirmation,
+    	mbYesNo, 0, mbNo) = mrYes then
+      CloseAction:=caFree;
+	end;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);

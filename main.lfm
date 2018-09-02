@@ -7,8 +7,10 @@ object MainForm: TMainForm
   ClientHeight = 342
   ClientWidth = 436
   Menu = MainMenu
+  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  Position = poDefault
   Visible = False
   object StatusBar: TStatusBar
     Left = 0
