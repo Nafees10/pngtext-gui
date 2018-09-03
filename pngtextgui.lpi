@@ -8,6 +8,10 @@
       <Title Value="pngtextgui"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
+      <XPManifest>
+        <TextName Value="NafeesHassan.pngtext.pngtextgui"/>
+        <TextDesc Value="A simple GUI text editor for pngtext."/>
+      </XPManifest>
       <Icon Value="0"/>
     </General>
     <VersionInfo>
