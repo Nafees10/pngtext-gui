@@ -195,8 +195,18 @@ begin
 	Lib:=TPngText.Create();
   if not Lib.Loaded then
   	Application.Terminate;
-  // check if a file was passed in command line args
-  if ParamCount >= 2 then
+  // check if need to write help text
+  if Application.HasOption('h', 'help') then
+  begin
+  	WriteLn ('pngtextgui - Usage:');
+    Writeln ('pngtextgui [container-image-path] [options]');
+    WriteLn ('Options:');
+    WriteLn ('  --read -r - automatically display contained text after loading container image');
+		Application.Terminate;
+    Exit;
+  end;
+	// check if a file was passed in command line args
+  if ParamCount >= 1 then
   begin
     if FileExists(ParamStr(1)) then
     begin
@@ -205,10 +215,11 @@ begin
       // let stdout know
 			WriteLn('Loaded '+ParamStr(1)+' as Container Image.');
 			// if command line flag -r was passed, read it into SynEdit too
-      if (ParamCount >= 3) and (ParamStr(2) = '-r') then
+      if Application.HasOption('r', 'read') then
       begin
         SynEdit.Lines.Clear;
         SynEdit.Lines.AddText(AnsiString(Lib.Data));
+        WriteLn('Data read and displayed from Container Image.');
 			end;
 		end else
     begin
