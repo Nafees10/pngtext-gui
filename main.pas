@@ -140,11 +140,9 @@ begin
   if Lib.IsSaved then
   	Exit;
 	// make sure that Container Image is set
-  if not FileExists(Lib.ContainerImage) then
-  	showError ('Invalid container image selected. Use Ctrl+O to select one.')
-  else
+  if FileExists(Lib.ContainerImage) then
   begin
-		if Lib.OutputImage = '' then
+    if Lib.OutputImage = '' then
     	if SaveDialog.Execute then
       	Lib.OutputImage:=SaveDialog.FileName;
     if Lib.OutputImage <> '' then
@@ -154,6 +152,9 @@ begin
     	if not Lib.IsSaved then
 				ShowError('Failed to save to image.');
 		end;
+	end else
+  begin
+		showError ('Invalid container image selected. Use Ctrl+O to select one.')
   end;
   Lib.Refresh();
 	UpdateStatusBar();
@@ -194,6 +195,27 @@ begin
 	Lib:=TPngText.Create();
   if not Lib.Loaded then
   	Application.Terminate;
+  // check if a file was passed in command line args
+  if ParamCount >= 2 then
+  begin
+    if FileExists(ParamStr(1)) then
+    begin
+      Lib.ContainerImage:=ParamStr(1);
+      Lib.Refresh();
+      // let stdout know
+			WriteLn('Loaded '+ParamStr(1)+' as Container Image.');
+			// if command line flag -r was passed, read it into SynEdit too
+      if (ParamCount >= 3) and (ParamStr(2) = '-r') then
+      begin
+        SynEdit.Lines.Clear;
+        SynEdit.Lines.AddText(AnsiString(Lib.Data));
+			end;
+		end else
+    begin
+      WriteLn('File '+ParamStr(1)+' does not exist.');
+		end;
+	end;
+  UpdateStatusBar();
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
