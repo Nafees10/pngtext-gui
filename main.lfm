@@ -11,12 +11,11 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poDefault
-  LCLVersion = '1.8.4.0'
   Visible = False
   object StatusBar: TStatusBar
     Left = 0
     Height = 21
-    Top = 298
+    Top = 321
     Width = 436
     Panels = <    
       item
@@ -25,7 +24,7 @@ object MainForm: TMainForm
       end    
       item
         Text = 'Not Saved'
-        Width = 100
+        Width = 70
       end    
       item
         Text = 'Quality:'
@@ -33,7 +32,7 @@ object MainForm: TMainForm
       end    
       item
         Text = 'Highest'
-        Width = 90
+        Width = 110
       end    
       item
         Text = 'Max Length:'
@@ -47,7 +46,7 @@ object MainForm: TMainForm
   end
   inline SynEdit: TSynEdit
     Left = 0
-    Height = 298
+    Height = 321
     Top = 0
     Width = 436
     Align = alClient
