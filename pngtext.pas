@@ -143,19 +143,22 @@ var
   ArrayPtr : BytePtr;
   I : Cardinal;
 begin
-	ContainerPngPChar:=PChar(Copy(_ContainerPng,0,Length(_ContainerPng)));
-  _SaturatedBytesCount:=LibPngCapacity(ContainerPngPChar, 8);
-  _Quality:=LibGetQuality(ContainerPngPChar, Length(Data));
-  ArrayPtr:=LibReadFromPng(ContainerPngPChar, @Len);
-  SetLength(_Data, Len);
-  if Len > 0 then
-  	for I:=0 to Len-1 do
-		begin
-			_Data[I]:= Byte(ArrayPtr^);
-      ArrayPtr:=ArrayPtr+1;
-		end;
-	// since everything is same as it was in image, no need to save
-  IsSaved:=True;
+  if FileExists(_ContainerPng) then
+  begin
+		ContainerPngPChar:=PChar(Copy(_ContainerPng,0,Length(_ContainerPng)));
+	  _SaturatedBytesCount:=LibPngCapacity(ContainerPngPChar, 8);
+	  _Quality:=LibGetQuality(ContainerPngPChar, Length(_Data));
+	  ArrayPtr:=LibReadFromPng(ContainerPngPChar, @Len);
+	  SetLength(_Data, Len);
+	  if Len > 0 then
+	  	for I:=0 to Len-1 do
+			begin
+				_Data[I]:= Byte(ArrayPtr^);
+	      ArrayPtr:=ArrayPtr+1;
+			end;
+		// since everything is same as it was in image, no need to save
+	  IsSaved:=True;
+	end;
 end;
 
 procedure TPngText.Write();
