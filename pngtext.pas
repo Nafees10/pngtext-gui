@@ -8,7 +8,7 @@ uses
 	Classes, SysUtils, dynlibs;
 
 const
-  LIBNAME = '/home/nafees/projects/pngtext/libpngtext.so';
+  LIBNAME = 'libpngtext.so.0.1.0';
 
 type
   ByteArray = array of Byte;
