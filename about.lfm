@@ -1,15 +1,17 @@
 object AboutForm: TAboutForm
   Left = 0
-  Height = 240
+  Height = 286
   Top = 0
-  Width = 320
-  Caption = 'About'
-  ClientHeight = 240
-  ClientWidth = 320
+  Width = 373
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'About pngtext'
+  ClientHeight = 286
+  ClientWidth = 373
   OnKeyPress = FormKeyPress
   Visible = False
   object Label1: TLabel
-    Left = 124
+    Left = 150
     Height = 23
     Top = 8
     Width = 73
@@ -20,7 +22,7 @@ object AboutForm: TAboutForm
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 80
+    Left = 107
     Height = 17
     Top = 32
     Width = 159
@@ -28,7 +30,7 @@ object AboutForm: TAboutForm
     ParentColor = False
   end
   object Label3: TLabel
-    Left = 67
+    Left = 93
     Height = 17
     Top = 56
     Width = 186
@@ -37,9 +39,9 @@ object AboutForm: TAboutForm
   end
   object LicenseMemo: TMemo
     Left = 0
-    Height = 114
+    Height = 160
     Top = 88
-    Width = 320
+    Width = 373
     Lines.Strings = (
       'MIT License'
       ''
@@ -71,8 +73,8 @@ object AboutForm: TAboutForm
   object CloseBtn: TButton
     Left = 0
     Height = 32
-    Top = 208
-    Width = 320
+    Top = 254
+    Width = 373
     Align = alBottom
     Caption = 'Close'
     OnClick = CloseBtnClick
