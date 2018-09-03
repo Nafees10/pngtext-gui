@@ -5,7 +5,8 @@ unit about;
 interface
 
 uses
-	Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
+	Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+	ExtCtrls;
 
 type
 
@@ -13,6 +14,7 @@ type
 
  TAboutForm = class(TForm)
 		CloseBtn: TButton;
+		Image: TImage;
 		Label1: TLabel;
 		Label2: TLabel;
 		Label3: TLabel;
